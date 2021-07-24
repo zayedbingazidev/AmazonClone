@@ -1,0 +1,3 @@
+  "proxy": "http://127.0.0.1:5000",
+is used in the package.json of frontend so that
+when the api request is made it redirects to backend

@@ -1,4 +1,3 @@
-import data from './data';
 import Product from './components/Product'
 import { BrowserRouter, Route } from 'react-router-dom'
 import ProductScreen from './screens/ProductScreen';
