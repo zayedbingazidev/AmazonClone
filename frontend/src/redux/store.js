@@ -1,9 +1,10 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
-import {productListReducer} from './reducers/productReducers'
+import {productDetailsReducer, productListReducer} from './reducers/productReducers'
 import thunk from 'redux-thunk';
 const initialState = {};
 const reducer = combineReducers({
-      productList: productListReducer
+      productList: productListReducer,
+      productDetails: productDetailsReducer
 })
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // this is only to make use of the chorme developer tools
 // const reducer = (state = initialState, action) => {
