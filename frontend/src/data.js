@@ -66,7 +66,7 @@ const data = {
                   
             },
             {
-                  _id: '5',
+                  _id: '6',
                   name: 'Belayat Slim Shirt',
                   category: 'Shirts',
                   image: '/images/p6.jpg',

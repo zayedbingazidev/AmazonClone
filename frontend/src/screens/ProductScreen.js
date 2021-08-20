@@ -10,6 +10,7 @@ import { detailProduct } from '../redux/action/productAction';
 
 export default function ProductScreen(props) {
       const product_id = props.match.params.id 
+      const [qty, setQty] = useState(1)
       const productDetails = useSelector( state => state.productDetails);
       const {loading, error, product} = productDetails;
 
@@ -18,6 +19,10 @@ export default function ProductScreen(props) {
             dispatch(detailProduct(product_id))
             console.log(product)
       }, [dispatch, product_id])
+
+      const addToCartHandler = () => {
+           props.history.push(`/cart/${product_id}?qty=${qty}`) 
+      }
       return (
             <div>
                   {loading? (<LoadingBox/>):error?(<MessageBox variant="danger">{error}</MessageBox>):(
@@ -65,11 +70,36 @@ export default function ProductScreen(props) {
                                                              </div>
                                                        </div>
                                                  </li>
-                                                 <li>
-                                                       <button className="primary block">
-                                                             Add to Cart
-                                                       </button>
-                                                 </li>
+                                                 {
+                                                      product.countInStock > 0 && (
+                                                            <>
+                                                                  <li>
+                                                                        <div class="row">
+                                                                              <div>
+                                                                                    QTY
+                                                                              </div>
+                                                                              <div>
+                                                                                    <select value={qty} onChange={e => setQty(e.target.value)}>
+                                                                                       {
+                                                                                          [
+                                                                                             ...Array(product.countInStock).keys()
+                                                                                          ].map(x => (
+                                                                                                <option value={x+1}>{x+1}</option>
+                                                                                          ))
+                                                                                       }   
+                                                                                    </select>
+                                                                              </div>
+                                                                        </div>  
+                                                                  </li>
+                                                                  <li>
+                                                                        <button onClick={addToCartHandler} className="primary block">
+                                                                              Add to Cart
+                                                                        </button>
+                                                                  </li>  
+                                                            </>  
+                                                      )
+                                                 }
+                                                 
                                            </ul>
                                      </div>
                                      
