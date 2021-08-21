@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -12,8 +11,7 @@ export default function HomeScreen() {
       const { loading, error, products } = productList;
       useEffect(() => {
             dispatch(listProducts())
-      }, []) 
-      {/* [] will run this function only once */}
+      }, [dispatch]) 
       return (
             <div>
                   {loading? (<LoadingBox/>):error?(<MessageBox variant="danger">{error}</MessageBox>):(

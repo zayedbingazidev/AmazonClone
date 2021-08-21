@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import { Link } from 'react-router-dom'
-import Product from '../components/Product'
 import Rating from '../components/Rating';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBox from '../components/LoadingBox';
@@ -17,7 +15,6 @@ export default function ProductScreen(props) {
       const dispatch = useDispatch();
       useEffect(() => {
             dispatch(detailProduct(product_id))
-            console.log(product)
       }, [dispatch, product_id])
 
       const addToCartHandler = () => {
